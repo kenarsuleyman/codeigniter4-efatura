@@ -25,7 +25,7 @@ class HtmlHelper
         $html = "";
         $i = 1;
         foreach ($data['malHizmetTable'] as $item) {
-            $html = "<tr>";
+            $html .= "<tr>";
             $html .= "<td>" . $i . "</td>";
             $html .= "<td>" . $item["malHizmet"] . "</td>";
             $html .= "<td>" . number_format($item["miktar"], 2, ",", ".") . " " . $this->formatUnit($item["birim"]) . "</td>";
