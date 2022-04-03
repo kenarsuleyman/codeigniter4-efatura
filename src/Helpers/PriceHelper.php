@@ -6,7 +6,7 @@ class PriceHelper
 {
     private $unitPrice;
     private $quantity;
-    private $taxRatio;
+    private $taxRate;
     private $unitWithoutTax;
     private $unitTax;
     private $totalTax;
@@ -16,10 +16,10 @@ class PriceHelper
     public function __construct(array $item)
     {
         $this->unitPrice = $item['price'];
-        $this->taxRatio = $item['taxRatio'] ?? 18;
+        $this->taxRate = $item['taxRate'] ?? 18;
         $this->quantity = $item['quantity'];
 
-        $this->unitWithoutTax = $this->unitPrice / ( 1 + $this->taxRatio/100 );
+        $this->unitWithoutTax = $this->unitPrice / ( 1 + $this->taxRate/100 );
         $this->unitTax = $this->unitPrice - $this->unitWithoutTax;
 
         $this->totalPrice = $this->unitPrice * $this->quantity;
@@ -71,6 +71,6 @@ class PriceHelper
 
     public function getTaxRatio(): int
     {
-        return $this->taxRatio;
+        return $this->taxRate;
     }
 }
