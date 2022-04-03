@@ -1,7 +1,13 @@
 {
     "name": "kenarsuleyman/codeigniter4-efatura",
 	"description": "CodeIgniter4 E Fatura",
+    "config": {
+        "platform": {
+            "php": "7.4.15"
+        }
+    },
     "require": {
+        "php": ">=7.0",
         "furkankadioglu/efatura": "^1.9",
         "dompdf/dompdf": "^1.2"
     },
