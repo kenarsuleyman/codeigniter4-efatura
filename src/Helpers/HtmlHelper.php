@@ -28,7 +28,7 @@ class HtmlHelper
             $html .= "<tr>";
             $html .= "<td>" . $i . "</td>";
             $html .= "<td>" . $item["malHizmet"] . "</td>";
-            $html .= "<td>" . number_format($item["miktar"], 2, ",", ".") . " " . $this->formatUnit($item["birim"]) . "</td>";
+            $html .= "<td>" . $item["miktar"] . " " . $this->formatUnit($item["birim"]) . "</td>";
             $html .= "<td>" . number_format($item["birimFiyat"], 2, ",", ".") . " " . $currency . "</td>";
             $html .= "<td>" . "%" . number_format($item["iskontoOrani"], 2, ",", ".") . "</td>";
             $html .= "<td>" . number_format($item["iskontoTutari"], 2, ",", ".") . " " . $currency . "</td>";
