@@ -31,7 +31,7 @@ class OrderHelper
                 'miktar' => $item['quantity'],
                 'birim'  =>  UnitType::ADET,
                 'birimFiyat' => $price->unitWithoutTax(),
-                'kdvOrani' => $price->getTaxRatio(),
+                'kdvOrani' => $price->getTaxRate(),
                 'fiyat' => $price->totalWithoutTax(),
                 'kdvTutari' => $price->totalTax(),
                 'malHizmetTutari' => $price->totalPrice(),

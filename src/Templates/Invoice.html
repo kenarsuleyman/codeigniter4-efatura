@@ -111,10 +111,9 @@
   <div class="section">
     <div class="contactBox">
       <span style="font-weight: bold">SAYIN</span>
-      <span>{alici_formatted}</span>
-      <span>{adres_formatted}</span>
+      <span>{alici}</span>
+      <span>{adres}</span>
       <span>Tel: {tel}</span>
-      <span>Fax: {fax}</span>
       <span>E-Posta: {eposta}</span>
       <span>TCKN: {vknTckn}</span>
     </div>
@@ -133,7 +132,7 @@
         </tr>
         <tr>
           <td><strong>Fatura Tipi:</strong></td>
-          <td>{faturaTipi}</td>
+          <td>SATIS</td>
         </tr>
         <tr>
           <td><strong>Fatura No:</strong></td>
@@ -141,7 +140,7 @@
         </tr>
         <tr>
           <td><strong>Fatura Tarihi:</strong></td>
-          <td>{faturaTarihi_formatted}</td>
+          <td>{tarih}</td>
         </tr>
         </tbody>
       </table>
@@ -177,26 +176,7 @@
   <div class="section" style="margin-top: 10px">
     <div class="invoiceSummary">
       <table id="summaryTable" style="width: 300px">
-        <tr>
-          <td style="width: 200px"><strong>Mal Hizmet Toplam Tutarı</strong></td>
-          <td style="width: 90px">{malhizmetToplamTutari_formatted}</td>
-        </tr>
-        <tr>
-          <td style="width: 200px"><strong>Toplam İskonto</strong></td>
-          <td style="width: 90px">{toplamIskonto_formatted}</td>
-        </tr>
-        <tr>
-          <td style="width: 200px"><strong>Toplam KDV</strong></td>
-          <td style="width: 90px">{hesaplanankdv_formatted}</td>
-        </tr>
-        <tr>
-          <td style="width: 200px"><strong>Vergiler Dahil Toplam Tutar</strong></td>
-          <td style="width: 90px">{vergilerDahilToplamTutar_formatted}</td>
-        </tr>
-        <tr>
-          <td style="width: 200px"><strong>Ödenecek Tutar</strong></td>
-          <td style="width: 90px">{odenecekTutar_formatted}</td>
-        </tr>
+        {total_table}
       </table>
     </div>
   </div>

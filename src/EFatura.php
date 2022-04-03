@@ -12,7 +12,6 @@ use kenarsuleyman\codeigniter4Efatura\Helpers\OrderHelper;
 class EFatura
 {
     private $conn;
-    private $userInfo;
     private $logo;
     private $signature;
 
@@ -37,8 +36,6 @@ class EFatura
      */
     public function create(array $customer, array $order, bool $kurumsal = false) : string
     {
-        $userInformations = $this->conn->getUserInformationsData();
-        $this->userInfo = $userInformations->export();
         $datetime = DateTime::createFromFormat( 'Y-m-d H:i:s', $order['date'] );
         $orderHelper = new OrderHelper($order);
 
@@ -80,5 +77,13 @@ class EFatura
         $this->conn->setInvoice($invoice);
         $this->conn->createDraftBasicInvoice();
         return $invoice->getUuid();
+    }
+
+    public function savePdf(string $uuid, string $path)
+    {
+        $invoice = new Invoice();
+        $invoice->setUuid($uuid);
+        $faturaDetay = $this->conn->setInvoice($invoice)
+            ->getInvoiceFromAPI();
     }
 }

@@ -13,11 +13,18 @@ class PriceHelper
     private $totalWithoutTax;
     private $totalPrice;
 
-    public function __construct(array $item)
+    public function __construct(array $item, bool $fromAPI = false)
     {
-        $this->unitPrice = $item['price'];
-        $this->taxRate = $item['taxRate'] ?? 18;
-        $this->quantity = $item['quantity'];
+        if($fromAPI)
+        {
+            $this->unitPrice = $item['malHizmetTutari'] / $item['miktar'];
+            $this->taxRate = $item['kdvOrani'];
+            $this->quantity = $item['miktar'];
+        }else{
+            $this->unitPrice = $item['price'];
+            $this->taxRate = $item['taxRate'] ?? 18;
+            $this->quantity = $item['quantity'];
+        }
 
         $this->unitWithoutTax = $this->unitPrice / ( 1 + $this->taxRate/100 );
         $this->unitTax = $this->unitPrice - $this->unitWithoutTax;
@@ -69,8 +76,13 @@ class PriceHelper
         return $this->totalPrice;
     }
 
-    public function getTaxRatio(): int
+    public function getTaxRate(): int
     {
         return $this->taxRate;
+    }
+
+    public function getQuantity(): float
+    {
+        return $this->quantity;
     }
 }
