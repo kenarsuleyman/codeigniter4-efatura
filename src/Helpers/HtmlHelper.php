@@ -98,7 +98,7 @@ class HtmlHelper
         }
     }
 
-    private function formatData(array $data)
+    public function formatData(array $data)
     {
 
         $date = DateTime::createFromFormat('d/m/Y H:i:s', $data['faturaTarihi'] . ' ' . $data["saat"]);

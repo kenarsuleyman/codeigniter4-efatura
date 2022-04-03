@@ -81,9 +81,12 @@ class EFatura
 
     public function savePdf(string $uuid, string $path)
     {
+        $htmlHelper = new HtmlHelper();
         $invoice = new Invoice();
         $invoice->setUuid($uuid);
         $faturaDetay = $this->conn->setInvoice($invoice)
             ->getInvoiceFromAPI();
+        $htmlHelper->formatData($faturaDetay);
+        $htmlHelper->export($path);
     }
 }
