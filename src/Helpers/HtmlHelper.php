@@ -16,7 +16,7 @@ class HtmlHelper
 
     public function __construct()
     {
-        $this->template = file_get_contents('../Templates/Invoice.html');
+        $this->template = file_get_contents(__DIR__ . '/../Templates/Invoice.html');
     }
 
     private function itemTable(array $data)
@@ -60,17 +60,17 @@ class HtmlHelper
             , '0.00 TL');
         if($temp['kdv_18'])
         {
-            $html .= sprintf('<tr><td style="width: 200px"><strong>Hesaplanan KDV(%18)</strong></td><td style="width: 90px">%s</td></tr>'
+            $html .= sprintf('<tr><td style="width: 200px"><strong>Hesaplanan KDV(%%18)</strong></td><td style="width: 90px">%s</td></tr>'
                 , number_format($temp["kdv_18"], 2, ",", ".") . " " . $currency);
         }
         if($temp['kdv_8'])
         {
-            $html .= sprintf('<tr><td style="width: 200px"><strong>Hesaplanan KDV(%8)</strong></td><td style="width: 90px">%s</td></tr>'
+            $html .= sprintf('<tr><td style="width: 200px"><strong>Hesaplanan KDV(%%8)</strong></td><td style="width: 90px">%s</td></tr>'
                 , number_format($temp["kdv_8"], 2, ",", ".") . " " . $currency);
         }
         if($temp['kdv_1'])
         {
-            $html .= sprintf('<tr><td style="width: 200px"><strong>Hesaplanan KDV(%1)</strong></td><td style="width: 90px">%s</td></tr>'
+            $html .= sprintf('<tr><td style="width: 200px"><strong>Hesaplanan KDV(%%1)</strong></td><td style="width: 90px">%s</td></tr>'
                 , number_format($temp["kdv_1"], 2, ",", ".") . " " . $currency);
         }
         $html .= sprintf('<tr><td style="width: 200px"><strong>Vergiler Dahil Toplam Tutar</strong></td><td style="width: 90px">%s</td></tr>'
@@ -109,7 +109,7 @@ class HtmlHelper
             'tel' => $data['tel'],
             'eposta' => $data['eposta'],
             'tarih' => $date->format('d-m-Y H:i'),
-            'alici' => ($data['aliciUnvan']) ?:  $data['aliciAdi'] . ' ' . $data['aliciSoyadi'],
+            'alici' => $data['aliciUnvan'] ??  $data['aliciAdi'] . ' ' . $data['aliciSoyadi'],
             'adres' => $data["bulvarcaddesokak"],
             'hizmet_table' => $this->itemTable($data),
             'total_table' => $this->totalTable($data),
