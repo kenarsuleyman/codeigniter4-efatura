@@ -25,7 +25,7 @@ class OrderHelper
         $totalTax = 0;
         foreach ($items as $item)
         {
-            $price = new PriceHelper($item['price']);
+            $price = new PriceHelper($item);
             $row = [
                 'malHizmet' => $item['title'],
                 'miktar' => $item['quantity'],
