@@ -1,6 +1,7 @@
 {
     "name": "kenarsuleyman/codeigniter4-efatura",
 	"description": "CodeIgniter4 E Fatura",
+    "version": "1.1.0",
     "config": {
         "platform": {
             "php": "7.4.15"
