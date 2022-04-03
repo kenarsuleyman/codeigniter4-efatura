@@ -13,11 +13,11 @@ class PriceHelper
     private $totalWithoutTax;
     private $totalPrice;
 
-    public function __construct(array $product)
+    public function __construct(array $item)
     {
-        $this->unitPrice = $product['price'];
-        $this->taxRatio = $product['taxRatio'] ?? 18;
-        $this->quantity = $product['quantity'];
+        $this->unitPrice = $item['price'];
+        $this->taxRatio = $item['taxRatio'] ?? 18;
+        $this->quantity = $item['quantity'];
 
         $this->unitWithoutTax = $this->unitPrice / ( 1 + $this->taxRatio/100 );
         $this->unitTax = $this->unitPrice - $this->unitWithoutTax;
